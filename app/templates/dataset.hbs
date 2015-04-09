@@ -1,1 +1,14 @@
-{{outlet}}
+<div class="row">
+  <div class="col-lg-9 map-view-box">
+    {{map-view dataset=dataset}}
+  </div>
+  <div class="col-lg-3">
+    <div class="row sentiment-analysis-box">
+      {{sentiment-analysis dataset=dataset}}
+    </div>
+    <br>
+    <div class="row tweets-list-box">
+      {{tweets-list dataset=dataset}}
+    </div>
+  </div>
+</div>

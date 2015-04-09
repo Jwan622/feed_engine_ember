@@ -2,10 +2,10 @@
   <div class="container">
     <h2>UsaUsa-Ember</h2>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Poverty<span class="sr-only">(current)</span></a></li>
-      <li><a href="#">Education</a></li>
-      <li><a href="#">Marriage</a></li>
-      <li><a href="#">Migration</a></li>
+      <li>{{#link-to 'dataset' 'poverty'}}Poverty{{/link-to}}</li>
+      <li>{{#link-to 'dataset' 'eduction'}}Education{{/link-to}}</li>
+      <li>{{#link-to 'dataset' 'marriage'}}Marriage{{/link-to}}</li>
+      <li>{{#link-to 'dataset' 'migration'}}Migration{{/link-to}}</li>
     </ul>
   </div>
 </nav>

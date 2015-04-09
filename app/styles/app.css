@@ -1,0 +1,14 @@
+.map-view-box {
+  background-color: red;
+  height: 500px;
+}
+
+.sentiment-analysis-box {
+  background-color: purple;
+  height: 150px;
+}
+
+.tweets-list-box {
+  background-color: green;
+  height: 330px;
+}
