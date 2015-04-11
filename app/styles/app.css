@@ -6,9 +6,26 @@
 .sentiment-analysis-box {
   background-color: purple;
   height: 150px;
+  padding: 15px 25px;
+  color: white;
 }
 
 .tweets-list-box {
   background-color: green;
   height: 330px;
+}
+
+#sentiment-desc {
+  font-size: 10px;
+  text-align: center;
+}
+
+#sentiment-title {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#sentiment-score {
+  font-size: 50px;
+  margin-top: 30px;
 }

@@ -1,14 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  dataset: null,
-
   model: function(params) {
-    this.set('dataset', params.dataset);
-    return params.dataset;
+    return Ember.RSVP.hash({
+      tweets: Ember.$.getJSON(`/api/v1/${params.dataset}/tweets`),
+      data: Ember.$.getJSON(`/api/v1/${params.dataset}/data`)
+    });
   },
 
-  setupController: function(controller, model) {
-    controller.set('dataset', this.get('dataset'));
-  }
 });
