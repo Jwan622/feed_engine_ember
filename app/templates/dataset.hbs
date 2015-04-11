@@ -1,14 +1,14 @@
 <div class="row">
-  <div class="col-lg-9 map-view-box">
+  <div class="col-lg-8 map-view-box">
     {{map-view dataset=dataset}}
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-4">
     <div class="row sentiment-analysis-box">
-      {{sentiment-analysis dataset=dataset}}
+      {{sentiment-analysis sentimentScore=sentimentScore}}
     </div>
     <br>
     <div class="row tweets-list-box">
-      {{tweets-list dataset=dataset}}
+      {{tweets-list tweets=tweets}}
     </div>
   </div>
 </div>
