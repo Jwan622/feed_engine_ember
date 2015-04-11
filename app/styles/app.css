@@ -1,19 +1,108 @@
 .map-view-box {
-  background-color: red;
+  background-color: #eee;
   height: 500px;
 }
 
 .sentiment-analysis-box {
-  background-color: purple;
+  background-color: #eee;
   height: 150px;
-  padding: 15px 25px;
-  color: white;
+  padding: 15px 35px;
 }
 
 .tweets-list-box {
-  background-color: green;
+  background-color: #eee;
   height: 330px;
+  padding: 0;
 }
+
+/*------------------------NAVBAR---------------------------*/
+
+#site-title {
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.dataset-nav {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.navbar .navbar-inner {
+  padding: 0;
+}
+
+.navbar .nav {
+  margin: 0;
+  display: table;
+  width: 100%;
+}
+
+.navbar .nav li {
+  display: table-cell;
+  width: auto;
+  float: none;
+}
+
+.navbar .nav li a {
+  font-weight: bold;
+  text-align: center;
+  border-left: 1px solid rgba(255, 255, 255, .75);
+  border-right: 1px solid rgba(0, 0, 0, .1);
+}
+
+.navbar .nav li:first-child a {
+  border-left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.navbar .nav li:last-child a {
+  border-right: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+/*------------------------MAP---------------------------*/
+
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+.feature {
+  fill: #ccc;
+  cursor: pointer;
+}
+
+.feature.active {
+  fill: orange;
+}
+
+.mesh {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.map-view-box {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden
+}
+
+.map-view-box img {
+  flex-shrink:0;
+  min-width:100%;
+  min-height:100%
+}
+
+
+/*------------------------SENTIMENT---------------------------*/
 
 #sentiment-desc {
   font-size: 10px;
@@ -22,10 +111,45 @@
 
 #sentiment-title {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 #sentiment-score {
-  font-size: 50px;
-  margin-top: 30px;
+  font-size: 60px;
+  margin-top: 25px;
+  text-align: right;
+  font-weight: 800;
+}
+
+.neg-sentiment {
+  color: #A62A2A;
+}
+
+.pos-sentiment {
+  color: #458B00;
+}
+
+/*------------------------TWEETS---------------------------*/
+
+.tweet-box {
+  padding: 15px 10px 10px 10px;
+  border-bottom: 5px solid white;
+  height: 112px;
+}
+
+.tweet-box p {
+  font-size: 12px;
+}
+
+.twitter-handle {
+  font-weight: bold;
+}
+
+.tweet-pic {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.tweet-text {
+  margin-left: -10px;
 }

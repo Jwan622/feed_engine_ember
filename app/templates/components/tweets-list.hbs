@@ -1,3 +1,15 @@
-{{#each tweets as |tweet|}}
-  <p>{{tweet.text}}</p>
+{{#each tweet in tweets}}
+  <div class="row tweet-box">
+    <div class="col-lg-2 tweet-pic">
+      <img src="{{tweet.user_prof_pic}}">
+    </div>
+    <div class="col-lg-10 tweet-text">
+      <p>
+        <span class="twitter-handle">
+          @{{tweet.screen_name}}: 
+        </span>{{tweet.text}}
+      </p>
+      <p><em>{{tweet.post_time}}</em></p>
+    </div>
+  </div>
 {{/each}}
