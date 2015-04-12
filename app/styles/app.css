@@ -28,7 +28,7 @@ body {
   color: white;
   text-transform: uppercase;
   letter-spacing: 7px;
-  font-weight: 200;
+  font-weight: 100;
 }
 
 .dataset-nav-box {
@@ -61,7 +61,7 @@ body {
 }
 
 .navbar .nav li a {
-  font-weight: 200;
+  font-weight: 100;
   font-size: 18px;
   letter-spacing: 3px;
   color: white;
@@ -73,7 +73,7 @@ body {
 
 .navbar .nav li a.active {
   background-color: #012531;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .navbar .nav li:first-child a {
@@ -131,13 +131,14 @@ body {
   font-size: 10px;
   text-align: center;
   color: white;
+  font-weight: 100;
 }
 
 #sentiment-title {
   text-align: center;
   margin-top: 5px;
   color: white;
-  font-weight: 200;
+  font-weight: 100;
   letter-spacing: 3px;
 }
 
@@ -169,6 +170,7 @@ body {
 
 .tweet-box p {
   font-size: 13px;
+  font-weight: 100;
   color: white;
 }
 
