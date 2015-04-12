@@ -88,6 +88,30 @@ body {
 
 /*------------------------MAP---------------------------*/
 
+#map {
+  margin-left: -10px;
+}
+
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+.feature {
+  fill: #ccc;
+  cursor: pointer;
+}
+
+.feature.active {
+  fill: #00B8F4;
+}
+
+.mesh {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 /*------------------------SENTIMENT---------------------------*/
 
@@ -135,7 +159,6 @@ body {
 /*------------------------TWEETS---------------------------*/
 
 .tweet-box {
-  height: 100px;
   padding-top: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -154,7 +177,7 @@ body {
 }
 
 .tweet-pic {
-  margin-top: 15px;
+  margin-top: 5px;
   margin-left: 10px;
 }
 

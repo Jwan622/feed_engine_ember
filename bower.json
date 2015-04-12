@@ -13,6 +13,7 @@
     "ember-qunit-notifications": "0.0.7",
     "qunit": "~1.17.1",
     "bootstrap": "~3.3.4",
-    "d3": "~3.5.5"
+    "d3": "~3.5.5",
+    "topojson": "~1.6.19"
   }
 }
