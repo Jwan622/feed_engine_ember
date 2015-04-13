@@ -35,18 +35,28 @@ export default Ember.Component.extend({
     svg
       .call(zoom.event);
 
-    d3.json("json/us.json", function(error, us) {
-      g.selectAll("path")
-        .data(topojson.feature(us, us.objects.states).features)
+    d3.json("json/2010_us_20m.json", function(error, us) {
+      svg.selectAll("path")
+        .data(us.features)
         .enter().append("path")
         .attr("d", path)
-        .attr("class", "feature")
-        .on("click", clicked);
+        .attr("fill",#999);
+    }
 
-      g.append("path")
-        .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b;  }))
-        .attr("class", "mesh")
-        .attr("d", path);
+/*
+ *    d3.json("json/2010_us_20m.json", function(error, us) {
+ *      g.selectAll("path")
+ *        .data(topojson.feature(us, us.features))
+ *        .enter().append("path")
+ *        .attr("d", path)
+ *        .attr("class", "feature")
+ *        .on("click", clicked);
+ *
+ *      g.append("path")
+ *        .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b;  }))
+ *        .attr("class", "mesh")
+ *        .attr("d", path);
+ */
     });
 
     function clicked(d) {
