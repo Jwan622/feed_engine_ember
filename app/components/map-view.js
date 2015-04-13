@@ -1,10 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  stateLookup: {
+    "Arizona": "AZ",
+    "California": "CA"
+  },
+
+  width: 950,
+  height: 500,
+
   didInsertElement: function() {
-    var width = 950,
-        height = 500,
+    var width = this.get('width'),
+        height = this.get('height'),
         active = d3.select(null);
+
+    var lookup = this.get('stateLookup')
 
     var projection = d3.geo.albersUsa()
       .scale(1000)
@@ -35,29 +45,16 @@ export default Ember.Component.extend({
     svg
       .call(zoom.event);
 
-    d3.json("json/2010_us_20m.json", function(error, us) {
-      svg.selectAll("path")
+    d3.json("json/2010-us-20m.json", function(error, us) {
+      g.selectAll("path")
         .data(us.features)
-        .enter().append("path")
+        .enter()
+        .append("path")
         .attr("d", path)
-        .attr("fill",#999);
-    }
-
-/*
- *    d3.json("json/2010_us_20m.json", function(error, us) {
- *      g.selectAll("path")
- *        .data(topojson.feature(us, us.features))
- *        .enter().append("path")
- *        .attr("d", path)
- *        .attr("class", "feature")
- *        .on("click", clicked);
- *
- *      g.append("path")
- *        .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b;  }))
- *        .attr("class", "mesh")
- *        .attr("d", path);
- */
-    });
+        .attr("class", "feature")
+        .on("click", clicked);
+      this.renderData();
+    }.bind(this));
 
     function clicked(d) {
       if (active.node() === this) return reset();
@@ -96,5 +93,10 @@ export default Ember.Component.extend({
     function stopped() {
       if (d3.event.defaultPrevented) d3.event.stopPropagation();
     }
-  }
+
+  },
+
+  renderData: function() {
+    var paths = d3.selectAll("path").attr("class", "feature test")
+  }.observes('dataset')
 });

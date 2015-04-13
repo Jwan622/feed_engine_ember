@@ -7,7 +7,6 @@ body {
   height: 500px;
 }
 
-
 .tweets-list-box {
   height: 330px;
   padding: 0;
@@ -100,17 +99,22 @@ body {
 .feature {
   fill: #ccc;
   cursor: pointer;
+  stroke: #012531;
+  stroke-width: 0.3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .feature.active {
   fill: #00B8F4;
 }
 
-.mesh {
-  fill: none;
-  stroke: #fff;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.CA {
+  fill: red;
+}
+
+.AZ {
+  fill: green;
 }
 
 /*------------------------SENTIMENT---------------------------*/
