@@ -146,6 +146,7 @@ body {
   font-size: 10px;
   text-align: center;
   color: white;
+  font-weight: 100;
 }
 
 #sentiment-title {
@@ -184,6 +185,7 @@ body {
 
 .tweet-box p {
   font-size: 13px;
+  font-weight: 100;
   color: white;
   font-weight: 200;
 }

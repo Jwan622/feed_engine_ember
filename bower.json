@@ -17,5 +17,6 @@
     "topojson": "~1.6.19",
     "colorbrewer": "~1.0.0",
     "tipsy": "~0.1.7"
+    "moment": "~2.10.2"
   }
 }

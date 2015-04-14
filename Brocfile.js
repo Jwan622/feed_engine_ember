@@ -15,6 +15,7 @@ app.import('bower_components/colorbrewer/colorbrewer.js');
 app.import('bower_components/colorbrewer/colorbrewer.css');
 app.import('bower_components/tipsy/src/javascripts/jquery.tipsy.js');
 app.import('bower_components/tipsy/src/stylesheets/tipsy.css');
+app.import('bower_components/moment/moment.js');
 
 // If you need to use different assets in different
 // environments, specify an object as the first parameter. That
