@@ -11,6 +11,10 @@ app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 app.import('bower_components/d3/d3.js');
 app.import('bower_components/topojson/topojson.js');
+app.import('bower_components/colorbrewer/colorbrewer.js');
+app.import('bower_components/colorbrewer/colorbrewer.css');
+app.import('bower_components/tipsy/src/javascripts/jquery.tipsy.js');
+app.import('bower_components/tipsy/src/stylesheets/tipsy.css');
 app.import('bower_components/moment/moment.js');
 
 // If you need to use different assets in different

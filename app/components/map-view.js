@@ -3,9 +3,74 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  mapAttributes: {
+    'poverty': 'percent_below_poverty',
+    'education': 'college_or_above_percent',
+    'marital': 'never_married_percentage',
+    'migration': 'different_state_percent'
+  },
+
+  stateLookup: {
+    'Alabama': 'AL',
+    'Alaska': 'AK',
+    'Arizona': 'AZ',
+    'Arkansas': 'AR',
+    'California': 'CA',
+    'Colorado': 'CO',
+    'Connecticut': 'CT',
+    'Delaware': 'DE',
+    'District Of Columbia': 'DC',
+    'Florida': 'FL',
+    'Georgia': 'GA',
+    'Hawaii': 'HI',
+    'Idaho': 'ID',
+    'Illinois': 'IL',
+    'Indiana': 'IN',
+    'Iowa': 'IA',
+    'Kansas': 'KS',
+    'Kentucky': 'KY',
+    'Louisiana': 'LA',
+    'Maine': 'ME',
+    'Maryland': 'MD',
+    'Massachusetts': 'MA',
+    'Michigan': 'MI',
+    'Minnesota': 'MN',
+    'Mississippi': 'MS',
+    'Missouri': 'MO',
+    'Montana': 'MT',
+    'Nebraska': 'NE',
+    'Nevada': 'NV',
+    'New Hampshire': 'NH',
+    'New Jersey': 'NJ',
+    'New Mexico': 'NM',
+    'New York': 'NY',
+    'North Carolina': 'NC',
+    'North Dakota': 'ND',
+    'Ohio': 'OH',
+    'Oklahoma': 'OK',
+    'Oregon': 'OR',
+    'Palau': 'PW',
+    'Pennsylvania': 'PA',
+    'Rhode Island': 'RI',
+    'South Carolina': 'SC',
+    'South Dakota': 'SD',
+    'Tennessee': 'TN',
+    'Texas': 'TX',
+    'Utah': 'UT',
+    'Vermont': 'VT',
+    'Virginia': 'VA',
+    'Washington': 'WA',
+    'West Virginia': 'WV',
+    'Wisconsin': 'WI',
+    'Wyoming': 'WY'
+  },
+
+  width: 950,
+  height: 500,
+
   didInsertElement: function() {
-    var width = 950,
-        height = 500,
+    var width = this.get('width'),
+        height = this.get('height'),
         active = d3.select(null);
 
     var projection = d3.geo.albersUsa()
@@ -37,19 +102,15 @@ export default Ember.Component.extend({
     svg
       .call(zoom.event);
 
-    d3.json("json/us.json", function(error, us) {
+    d3.json("json/2010-us-20m.json", function(error, us) {
       g.selectAll("path")
-        .data(topojson.feature(us, us.objects.states).features)
-        .enter().append("path")
+        .data(us.features)
+        .enter()
+        .append("path")
         .attr("d", path)
-        .attr("class", "feature")
         .on("click", clicked);
-
-      g.append("path")
-        .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b;  }))
-        .attr("class", "mesh")
-        .attr("d", path);
-    });
+      this.renderData();
+    }.bind(this));
 
     function clicked(d) {
       if (active.node() === this) return reset();
@@ -88,5 +149,43 @@ export default Ember.Component.extend({
     function stopped() {
       if (d3.event.defaultPrevented) d3.event.stopPropagation();
     }
-  }
+
+  },
+
+  obtainStateData: function(state) {
+    var lookup = this.get('stateLookup');
+    var state_code = lookup[state];
+    var data = this.get('data');
+
+    if (!state_code) { return "" }
+
+    return data.filter(function(state_data) {
+      return state_data.state === state_code;
+    })[0];
+  },
+
+  renderData: function() {
+    var data = this.get('data');
+    var dataset = this.get('dataset');
+    var mapAttributes = this.get('mapAttributes');
+    var outputColumn = mapAttributes[dataset];
+
+    var min = d3.min(data, function(d) {
+      return d[outputColumn];
+    });
+
+    var max = d3.max(data, function(d) {
+      return d[outputColumn];
+    });
+
+    var q = d3.scale.ordinal().domain([min,max]).range(["map-q0", "map-q1",
+      "map-q2", "map-q3", "map-q4", "map-q5", "map-q6", "map-q7", "map-q8"])
+
+    d3.selectAll("path")
+      .attr("class", function(d) {
+        var state_data = this.obtainStateData(d.properties.NAME);
+        var percent = state_data[outputColumn];
+        return `feature ${ q(percent) }`;
+      }.bind(this));
+  }.observes('data')
 });

@@ -7,7 +7,6 @@ body {
   height: 500px;
 }
 
-
 .tweets-list-box {
   height: 330px;
   padding: 0;
@@ -90,6 +89,15 @@ body {
 
 #map {
   margin-left: -10px;
+  margin-top: 80px;
+}
+
+.map-description {
+  color: white;
+  text-align: center;
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .background {
@@ -100,18 +108,24 @@ body {
 .feature {
   fill: #ccc;
   cursor: pointer;
-}
-
-.feature.active {
-  fill: #00B8F4;
-}
-
-.mesh {
-  fill: none;
-  stroke: #fff;
+  stroke: #012531;
+  stroke-width: 0.3px;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+.feature.active {
+}
+
+.map-q0 { fill: #ffffe5; }
+.map-q1 { fill: #f7fcb9; }
+.map-q2 { fill: #d9f0a3; }
+.map-q3 { fill: #addd8e; }
+.map-q4 { fill: #78c679; }
+.map-q5 { fill: #41ab5d; }
+.map-q6 { fill: #238443; }
+.map-q7 { fill: #006837; }
+.map-q8 { fill: #004529; }
 
 /*------------------------SENTIMENT---------------------------*/
 
@@ -125,6 +139,7 @@ body {
 
 .sentiment-words {
   padding: 0 35px 0 15px;
+  font-weight: 200;
 }
 
 #sentiment-desc {
@@ -172,10 +187,12 @@ body {
   font-size: 13px;
   font-weight: 100;
   color: white;
+  font-weight: 200;
 }
 
 .twitter-handle {
-  font-weight: 800;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .tweet-pic {
