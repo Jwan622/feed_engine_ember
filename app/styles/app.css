@@ -89,6 +89,7 @@ body {
 
 #map {
   margin-left: -10px;
+  margin-top: 80px;
 }
 
 .background {
@@ -106,18 +107,17 @@ body {
 }
 
 .feature.active {
-  fill: #00B8F4;
 }
 
-.map-q0 { fill: #f7fcfd; }
-.map-q1 { fill: #e0ecf4; }
-.map-q2 { fill: #bfd3e6; }
-.map-q3 { fill: #9ebcda; }
-.map-q4 { fill: #8c96c6; }
-.map-q5 { fill: #8c6bb1; }
-.map-q6 { fill: #88419d; }
-.map-q7 { fill: #810f7c; }
-.map-q8 { fill: #4d004b; }
+.map-q0 { fill: #ffffe5; }
+.map-q1 { fill: #f7fcb9; }
+.map-q2 { fill: #d9f0a3; }
+.map-q3 { fill: #addd8e; }
+.map-q4 { fill: #78c679; }
+.map-q5 { fill: #41ab5d; }
+.map-q6 { fill: #238443; }
+.map-q7 { fill: #006837; }
+.map-q8 { fill: #004529; }
 
 /*------------------------SENTIMENT---------------------------*/
 
