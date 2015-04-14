@@ -3,8 +3,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   mapAttributes: {
     'poverty': 'percent_below_poverty',
-    'education': '',
-    'marital': '',
+    'education': 'college_or_above_percent',
+    'marital': 'never_married_percentage',
+    'migration': 'different_state_percent'
   },
 
   stateLookup: {
@@ -69,8 +70,6 @@ export default Ember.Component.extend({
     var width = this.get('width'),
         height = this.get('height'),
         active = d3.select(null);
-
-    var lookup = this.get('stateLookup')
 
     var projection = d3.geo.albersUsa()
       .scale(1000)
@@ -151,17 +150,30 @@ export default Ember.Component.extend({
 
   },
 
-  renderData: function() {
+  obtainStateData: function(state) {
     var lookup = this.get('stateLookup');
-    var map_attrs = this.get('mapAttributes');
-    var data = this.get('data').data;
+    var state_code = lookup[state];
+    var data = this.get('data');
+
+    if (!state_code) { return "" }
+
+    return data.filter(function(state_data) {
+      return state_data.state === state_code;
+    })[0];
+  },
+
+  renderData: function() {
+    var data = this.get('data');
+    var dataset = this.get('dataset');
+    var mapAttributes = this.get('mapAttributes');
+    var outputColumn = mapAttributes[dataset];
 
     var min = d3.min(data, function(d) {
-      return d.percent_below_poverty;
+      return d[outputColumn];
     });
 
     var max = d3.max(data, function(d) {
-      return d.percent_below_poverty
+      return d[outputColumn];
     });
 
     var q = d3.scale.ordinal().domain([min,max]).range(["map-q0", "map-q1",
@@ -169,16 +181,9 @@ export default Ember.Component.extend({
 
     d3.selectAll("path")
       .attr("class", function(d) {
-        return `feature ${ lookup[d.properties.NAME] }`
-      })
-      .attr("class", function(d) {
-        var state = lookup[d.properties.NAME];
-        if (!state) { return "" }
-        var percent = data.filter(function(state_data) {
-          return state_data.state === state;
-        })[0].percent_below_poverty;
-
+        var state_data = this.obtainStateData(d.properties.NAME);
+        var percent = state_data[outputColumn];
         return `feature ${ q(percent) }`;
-      })
+      }.bind(this));
   }.observes('data')
 });
