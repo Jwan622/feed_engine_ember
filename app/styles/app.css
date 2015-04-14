@@ -27,7 +27,7 @@ body {
   color: white;
   text-transform: uppercase;
   letter-spacing: 7px;
-  font-weight: 200;
+  font-weight: 100;
 }
 
 .dataset-nav-box {
@@ -60,7 +60,7 @@ body {
 }
 
 .navbar .nav li a {
-  font-weight: 200;
+  font-weight: 100;
   font-size: 18px;
   letter-spacing: 3px;
   color: white;
@@ -72,7 +72,7 @@ body {
 
 .navbar .nav li a.active {
   background-color: #012531;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .navbar .nav li:first-child a {
@@ -90,6 +90,13 @@ body {
 #map {
   margin-left: -10px;
   margin-top: 80px;
+}
+
+.map-description {
+  color: white;
+  text-align: center;
+  font-weight: 100;
+  letter-spacing: 1px;
 }
 
 .background {
@@ -131,6 +138,7 @@ body {
 
 .sentiment-words {
   padding: 0 35px 0 15px;
+  font-weight: 200;
 }
 
 #sentiment-desc {
@@ -143,7 +151,7 @@ body {
   text-align: center;
   margin-top: 5px;
   color: white;
-  font-weight: 200;
+  font-weight: 100;
   letter-spacing: 3px;
 }
 
@@ -176,10 +184,12 @@ body {
 .tweet-box p {
   font-size: 13px;
   color: white;
+  font-weight: 200;
 }
 
 .twitter-handle {
-  font-weight: 800;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .tweet-pic {
