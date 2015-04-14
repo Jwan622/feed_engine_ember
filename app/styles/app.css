@@ -109,13 +109,15 @@ body {
   fill: #00B8F4;
 }
 
-.CA {
-  fill: red;
-}
-
-.AZ {
-  fill: green;
-}
+.map-q0 { fill: #f7fcfd; }
+.map-q1 { fill: #e0ecf4; }
+.map-q2 { fill: #bfd3e6; }
+.map-q3 { fill: #9ebcda; }
+.map-q4 { fill: #8c96c6; }
+.map-q5 { fill: #8c6bb1; }
+.map-q6 { fill: #88419d; }
+.map-q7 { fill: #810f7c; }
+.map-q8 { fill: #4d004b; }
 
 /*------------------------SENTIMENT---------------------------*/
 

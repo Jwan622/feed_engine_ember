@@ -7,5 +7,4 @@ export default Ember.Route.extend({
       data: Ember.$.getJSON(`/api/v1/${params.dataset}/data`)
     });
   },
-
 });
