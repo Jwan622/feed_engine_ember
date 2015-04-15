@@ -67,12 +67,15 @@ export default Ember.Component.extend({
 
   width: 950,
   height: 500,
+  activeState: null,
 
   didInsertElement: function() {
     var width = this.get('width'),
         height = this.get('height'),
         active = d3.select(null),
-        dataset = this.get('dataset');
+        dataset = this.get('dataset'),
+        stateLookup = this.get('stateLookup'),
+        data = this.get('data');
 
     var projection = d3.geo.albersUsa()
       .scale(1000)
@@ -144,25 +147,30 @@ export default Ember.Component.extend({
         .attr("width", width)
         .attr("height", height)
         .on("click", reset);
-
+      
+      setActiveState();
       generateTitle();
-      generateData();
     }
 
+    var setActiveState = function() {
+      var state = active.data()[0].properties.NAME;
+      this.set('activeState', state);
+    }.bind(this)
+
+    var removeActiveState = function() {
+      this.set('activeState', null);
+    }.bind(this)
+
     function generateTitle() {
-      var title_dataset = dataset;
       var g = d3.select(".info-container");
       var state = active.data()[0].properties.NAME;
+      console.log(state)
       g.append("text")
-        .text(`${state}: ${title_dataset}`)
+        .text(`${state}`)
         .attr("class", "info-title")
         .attr("text-anchor", "middle")
         .attr("x", width / 2)
         .attr("y", 75)
-    }
-
-    function generateData() {
-
     }
 
     function reset() {
@@ -174,6 +182,7 @@ export default Ember.Component.extend({
         .call(zoom.translate([0, 0]).scale(1).event);
 
       d3.select(".info-container").remove();
+      removeActiveState();
     }
 
     function zoomed() {
@@ -224,5 +233,24 @@ export default Ember.Component.extend({
         var percent = state_data[outputColumn];
         return `feature ${ q(percent) }`;
       }.bind(this));
-  }.observes('data')
+  }.observes('data'),
+
+  removeStateData: function() {
+    d3.select('.info-data').remove();
+    this.appendStateData();
+  }.observes('dataset'),
+
+  appendStateData: function() {
+    var g = d3.select(".info-container");
+    var dataset = this.get('dataset')
+    var width = this.get('width');
+    console.log(g);
+
+    g.append("text")
+      .text(dataset)
+      .attr("class", "info-data")
+      .attr("text-anchor", "middle")
+      .attr("x", width / 2)
+      .attr("y", 200)
+  }.observes('activeState')
 });
