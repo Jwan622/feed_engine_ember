@@ -71,7 +71,8 @@ export default Ember.Component.extend({
   didInsertElement: function() {
     var width = this.get('width'),
         height = this.get('height'),
-        active = d3.select(null);
+        active = d3.select(null),
+        dataset = this.get('dataset');
 
     var projection = d3.geo.albersUsa()
       .scale(1000)
@@ -107,6 +108,9 @@ export default Ember.Component.extend({
         .data(us.features)
         .enter()
         .append("path")
+        .attr("state", function(d) {
+          return d.properties.NAME
+        })
         .attr("d", path)
         .on("click", clicked);
       this.renderData();
@@ -127,7 +131,38 @@ export default Ember.Component.extend({
 
       svg.transition()
         .duration(750)
-        .call(zoom.translate(translate).scale(scale).event);
+        .call(zoom.translate(translate).scale(scale).event)
+        .each("end", addInfoBox);
+    }
+
+    function addInfoBox() {
+      var g = svg.append("g")
+        .attr("class", "info-container")
+
+      g.append("rect")
+        .attr("class", "info-box")
+        .attr("width", width)
+        .attr("height", height)
+        .on("click", reset);
+
+      generateTitle();
+      generateData();
+    }
+
+    function generateTitle() {
+      var title_dataset = dataset;
+      var g = d3.select(".info-container");
+      var state = active.data()[0].properties.NAME;
+      g.append("text")
+        .text(`${state}: ${title_dataset}`)
+        .attr("class", "info-title")
+        .attr("text-anchor", "middle")
+        .attr("x", width / 2)
+        .attr("y", 75)
+    }
+
+    function generateData() {
+
     }
 
     function reset() {
@@ -137,6 +172,8 @@ export default Ember.Component.extend({
       svg.transition()
         .duration(750)
         .call(zoom.translate([0, 0]).scale(1).event);
+
+      d3.select(".info-container").remove();
     }
 
     function zoomed() {

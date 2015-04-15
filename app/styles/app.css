@@ -100,6 +100,15 @@ body {
   text-transform: uppercase;
 }
 
+.info-box {
+  fill: rgba(0, 0, 0, 0.6);
+}
+
+.info-title {
+  font-size: 50px;
+  fill: white;
+}
+
 .background {
   fill: none;
   pointer-events: all;
@@ -181,6 +190,10 @@ body {
   border: 1px solid #00222F;
   border-radius: 3px;
   background-color: #002D3D;
+}
+
+.tweets-list-box {
+  max-height: 300px;
 }
 
 .tweet-box p {
