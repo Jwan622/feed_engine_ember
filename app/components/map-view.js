@@ -236,9 +236,11 @@ export default Ember.Component.extend({
 
     d3.selectAll("path")
       .attr("class", function(d) {
-        var state_data = this.obtainStateData(d.properties.NAME);
-        var percent = state_data[outputColumn];
-        return `feature ${ q(percent) }`;
+        if (d.properties) {
+          var state_data = this.obtainStateData(d.properties.NAME);
+          var percent = state_data[outputColumn];
+          return `feature ${ q(percent) }`;
+        }
       }.bind(this));
   }.observes('data'),
 
