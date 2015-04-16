@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   didInsertElement: function() {
+    console.log(this.get('dataset'));
     this.generateDonut();
   },
 
@@ -10,6 +11,8 @@ export default Ember.Component.extend({
     var transition = 200;
     var sentimentScore = this.get('sentimentScore');
     var percent    = (sentimentScore + 1) * 50;
+  
+    d3.select('.sentiment-donut').remove();
 
     drawDonutChart('#donut', percent, 100, 100, ".35em");
 
@@ -32,6 +35,7 @@ export default Ember.Component.extend({
         .outerRadius(radius);
 
       var svg = d3.select(element).append("svg")
+        .attr("class", "sentiment-donut")
         .attr("width", width)
         .attr("height", height)
         .append("g")
@@ -43,6 +47,9 @@ export default Ember.Component.extend({
         .attr("class", function(d, i) { return "color" + i  })
         .attr("d", arc)
         .each(function(d) { this._current = d;  }); // store the initial values
+
+      svg.selectAll("path")
+        .each(function(d) { console.log(d); })
 
       var text = svg.append("text")
         .attr("text-anchor", "middle")
