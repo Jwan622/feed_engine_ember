@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   didInsertElement: function() {
-    console.log(this.get('dataset'));
     this.generateDonut();
   },
 
@@ -31,7 +30,7 @@ export default Ember.Component.extend({
       var format = d3.format(".0%");
 
       var arc = d3.svg.arc()
-        .innerRadius(radius - 20)
+        .innerRadius(radius - 10)
         .outerRadius(radius);
 
       var svg = d3.select(element).append("svg")
@@ -47,9 +46,6 @@ export default Ember.Component.extend({
         .attr("class", function(d, i) { return "color" + i  })
         .attr("d", arc)
         .each(function(d) { this._current = d;  }); // store the initial values
-
-      svg.selectAll("path")
-        .each(function(d) { console.log(d); })
 
       var text = svg.append("text")
         .attr("text-anchor", "middle")
