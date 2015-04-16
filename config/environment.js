@@ -45,6 +45,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.apiUrl = 'http://usa-usa.herokuapp.com'
 
   }
 
