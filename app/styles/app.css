@@ -161,6 +161,35 @@ body {
 
 /*------------------------SENTIMENT---------------------------*/
 
+#donut {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  width: 960px;
+  padding-left: 20px;
+}
+
+#donut text {
+  font-family: "RamaGothicM-Heavy",Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black",sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 16rem;
+  fill: #1072b8;
+}
+
+#donut {
+  width: 29rem;
+  height: 29rem;
+  margin: 0 auto;
+}
+
+#donut path.color0 {
+  fill: #1072b8;
+}
+
+#donut path.color1 {
+  fill: #35526b;
+}
+
 .sentiment-analysis-box {
   background-color: #002D3D;
   border: 1px solid #00222F;
