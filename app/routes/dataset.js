@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ENV from 'usausa-ember/config/environment'
 
-const url = ENV.apiUrl;
+const url = ENV.apiUrl || '';
 
 export default Ember.Route.extend({
   model: function(params) {
