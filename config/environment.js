@@ -20,6 +20,11 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.contentSecurityPolicy = {
+      'connect-src': "'self' *",
+      'img-src': "'self' *",
+      'script-src': "'self' *"
+    };
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -40,7 +45,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.apiUrl = 'http://usa-usa.herokuapp.com'
   }
 
   return ENV;
